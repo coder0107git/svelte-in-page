@@ -12,11 +12,23 @@
 );
 const workerUrl = URL.createObjectURL(await workerRes.blob());*/
 
-const workerBuilder = (
+/*const workerBuilder = (
     await import(
         "https://esm.sh/@sveltejs/repl@0.4.0/dist/workers/bundler/index.js?worker"
     )
-).default;
+).default;*/
+
+const workerCodeBlob = new Blob(
+    [
+        `await import("https://esm.sh/@sveltejs/repl@0.4.0/dist/workers/bundler/index.js")`,
+    ],
+    { type: "text/javascript" }
+);
+
+const workerBuilder = () =>
+    new Worker(URL.createObjectURL(workerCodeBlob), {
+        type: "module",
+    });
 
 function BuildWorker() {
     return workerBuilder(); //new Worker(workerUrl, { type: "module" });
