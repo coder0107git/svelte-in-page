@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Home</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width" />
+        <title>My Page!</title>
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body>
+        <main>
+            <h1>Home page</h1>
+        </main>
+
+        <template
+            data-type="svelte:component"
+            data-path="./"
+            data-name="App"
+            data-type="svelte"
+        >
+            <script></script>
+        </template>
+
+        <script src="https://cdn.jsdelivr.net/gh/gh-canon/stack-snippet-console@master/console.js"></script>
+        <script>
+            window.onerror = (...params) => console.error(...params);
+            const _log = console.log;
+
+            console.log = (...params) => params.forEach(param => _log(param));
+        </script>
+        <script type="module" src="script.js"></script>
+        <script type="module">
+            import { Bundler } from "./compile-svelte.js";
+
+            const bundle = Bundler();
+            const a = bundle.bundle([
+                {
+                    name: "App.svelte",
+                    type: "svelte",
+                    source: `<${"script"}>
+	let name = 'world';
+</${"script"}>
+
+<${"h1"}>Hello {name}!</${"h1"}>`,
+                },
+            ]);
+
+            console.log(
+                a,
+                bundle,
+            );
+
+            console.log(await a);
+        </script>
+    </body>
+</html>
