@@ -2,7 +2,7 @@
 
 import { Bundler } from "./svelte-bundler.js";
 
-export let packagesUrl = "https://unpkg.com/";
+export let packagesUrl = "https://unpkg.com";
 export let svelteUrl = `${packagesUrl}/svelte`;
 
 const bundler = () =>

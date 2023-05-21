@@ -51,6 +51,8 @@ class Bundler {
         if (!workers.has(hash)) {
             const worker = new BuildWorker();
 
+            console.log(worker);
+
             const workerErrorHandler = (e, ...params) => {
                 const message = JSON.stringify(
                     `${e.message} (${e.filename}:${e.lineno})`
