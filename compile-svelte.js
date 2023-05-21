@@ -7,8 +7,8 @@ export let svelteUrl = `${packagesUrl}/svelte`;
 
 const bundler = () =>
     new Bundler({
-        packages_url: packagesUrl,
-        svelte_url: svelteUrl,
+        packagesUrl,
+        svelteUrl,
         onstatus: (...params) => {
             /* no-op */ console.info(...params);
         },
