@@ -20,14 +20,15 @@ const workerUrl = URL.createObjectURL(await workerRes.blob());*/
 
 const workerCodeBlob = new Blob(
     [
-        `await import("https://esm.sh/@sveltejs/repl@0.4.0/dist/workers/bundler/index.js")`,
+        /*`await import("https://esm.sh/@sveltejs/repl@0.4.0/dist/workers/bundler/index.js")`*/
+        `importScripts("https://esm.sh/@sveltejs/repl@0.4.0/dist/workers/bundler/index.js")`,
     ],
     { type: "text/javascript" }
 );
 
 const workerBuilder = () =>
     new Worker(URL.createObjectURL(workerCodeBlob), {
-        type: "module",
+        //type: "module",
     });
 
 function BuildWorker() {
