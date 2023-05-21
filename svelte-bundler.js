@@ -68,6 +68,8 @@ class Bundler {
         this.worker.addEventListener("message", event => {
             const handler = this.handlers.get(event.data.uid);
 
+            debug();
+
             console.log(handler, event);
 
             if (handler) {
